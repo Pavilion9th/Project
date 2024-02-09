@@ -5,6 +5,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.restaruant_reservation.ui.theme.Screens.first
+import com.example.restaruant_reservation.ui.theme.Screens.forgotPassword1
+import com.example.restaruant_reservation.ui.theme.Screens.homePage
+import com.example.restaruant_reservation.ui.theme.Screens.login
+import com.example.restaruant_reservation.ui.theme.Screens.second
+import com.example.restaruant_reservation.ui.theme.Screens.signUp
+import com.example.restaruant_reservation.ui.theme.Screens.third
 
 @Composable
 fun NavGraph() {
@@ -15,21 +21,22 @@ fun NavGraph() {
         }
 
         composable(route = Screens.Second.route) {
-            first(navController = navController)
-        }
-
-        composable(route = Screens.HomePage.route) {
-            first(navController = navController)
+            second(navController = navController)
         }
         composable(route = Screens.Third.route) {
-            first(navController = navController)
+            third(navController = navController)
         }
         composable(route = Screens.Login.route) {
-            first(navController = navController)
+            login(navController = navController)
+        }
+        composable(route = Screens.HomePage.route) {
+            homePage(navController = navController)
+        }
+        composable(route = Screens.ForgotPassword1.route) {
+            forgotPassword1(navController = navController)
         }
         composable(route = Screens.SignUp.route) {
-            first(navController = navController)
+            signUp(navController = navController)
         }
-        
     }
 }

@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Favorite
@@ -22,23 +24,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.restaruant_reservation.R
+import com.example.restaruant_reservation.ui.theme.Brown
 import com.example.restaruant_reservation.ui.theme.navigation.Screens
 
 @Composable
 fun first(navController: NavController) {
+    val fontFamily = FontFamily(Font(R.font.montserratbold))
+    val bold = FontFamily(Font(R.font.montserratbolditalic))
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.White),
+            .background(color = Color.White)
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+
         Row(modifier = Modifier.padding(bottom = 50.dp)) {
 
             Image(
@@ -51,7 +59,8 @@ fun first(navController: NavController) {
             Text(
                 text = "Welcome to Los \nPollos Hermanos", fontSize = 23.sp,
                 modifier = Modifier.padding(vertical = 0.dp),
-                fontFamily = FontFamily.Serif
+                fontFamily = bold,
+                color = Brown
             )
 
         }
@@ -61,29 +70,46 @@ fun first(navController: NavController) {
             modifier = Modifier.size(240.dp)
         )
 
-        Text(text = "Nearby Restaurants", fontSize = 21.sp, modifier = Modifier.padding(top = 10.dp))
+        Text(
+            text = "Nearby Restaurants",
+            fontSize = 21.sp,
+            modifier = Modifier.padding(top = 10.dp),
+            fontFamily = fontFamily,
+            color = Brown
+        )
         Text(
             text = "Don't have to go far to find a good restaurant",
             fontSize = 16.sp,
-            modifier = Modifier.padding(vertical = 20.dp)
+            fontFamily=fontFamily,
+            color = Brown,
+            modifier = Modifier.padding(top = 20.dp, bottom = 80.dp)
         )
-        Row(horizontalArrangement = Arrangement.SpaceBetween ,modifier = Modifier.fillMaxWidth().padding(top = 35.dp)) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 25.dp, vertical = 45.dp)
+        ) {
             Text(
                 text = "Skip",
-                fontFamily = FontFamily.Serif,
+                fontFamily = fontFamily,
+                color = Brown,
                 modifier = Modifier.clickable { navController.navigate((Screens.Login.route)) })
             Row {
 
 
-                Icon(imageVector = Icons.Default.Favorite, contentDescription = "Favorite")
-                Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Favorite")
-                Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Favorite")
+                Icon(imageVector = Icons.Default.Favorite, contentDescription = "Favorite", tint = Brown)
+                Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Favorite", tint = Brown)
+                Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Favorite", tint = Brown)
             }
 //            Image(
 //                painter = painterResource(id = R.drawable.dods1),
 //                contentDescription = "something"
 //            )
-            Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "description", modifier = Modifier.clickable { navController.navigate((Screens.Second.route)) })
+            Icon(
+                imageVector = Icons.Default.ArrowForward,
+                contentDescription = "description",
+                tint = Brown,
+                modifier = Modifier.clickable { navController.navigate((Screens.Second.route)) })
         }
     }
 }
