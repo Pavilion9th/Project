@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.restaruant_reservation.ui.theme.Screens.ReservationScreen
 import com.example.restaruant_reservation.ui.theme.Screens.first
 import com.example.restaruant_reservation.ui.theme.Screens.forgotPassword1
 import com.example.restaruant_reservation.ui.theme.Screens.homePage
@@ -15,7 +16,7 @@ import com.example.restaruant_reservation.ui.theme.Screens.third
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screens.HomePage.route) {
+    NavHost(navController = navController, startDestination = Screens.First.route) {
         composable(route = Screens.First.route) {
             first(navController = navController)
         }
@@ -37,6 +38,9 @@ fun NavGraph() {
         }
         composable(route = Screens.SignUp.route) {
             signUp(navController = navController)
+        }
+        composable(route = Screens.Reservation.route) {
+            ReservationScreen(navController = navController)
         }
     }
 }
