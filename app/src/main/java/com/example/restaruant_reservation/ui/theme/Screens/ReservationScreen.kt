@@ -1,5 +1,6 @@
 package com.example.restaruant_reservation.ui.theme.Screens
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.rememberPagerState
@@ -28,14 +30,15 @@ import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,6 +47,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.restaruant_reservation.R
+import com.example.restaruant_reservation.ui.theme.RedCard
 import com.example.restaruant_reservation.ui.theme.TransparentWhite
 import kotlinx.coroutines.launch
 
@@ -60,7 +64,10 @@ fun ReservationScreen(navController: NavController) {
     val tabData = listOf("Reservation", "Menu", "Reviews")
     val bodyPagerState = rememberPagerState(pageCount = {tabData.size})
     val coroutineScope = rememberCoroutineScope()
-    val selectedIndex = mutableStateOf(0)
+    val selectedIndex = remember {
+        mutableIntStateOf(0)
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -141,6 +148,7 @@ fun ReservationScreen(navController: NavController) {
                     height = 3.dp,
                     color = Color(android.graphics.Color.parseColor("#FF2F7A83"))
                 )
+                Log.d("SelectedIndex", "ReservationScreen: ${selectedIndex.value}")
             },
             containerColor = Color.White
         ) {
@@ -154,23 +162,72 @@ fun ReservationScreen(navController: NavController) {
             }
         }
         Spacer(modifier = Modifier.height(10.dp))
-        repeat(5) {
-            Text(
-                text = "description",
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Justify,
-                modifier = Modifier
-                    .background(Color.White)
-                    .padding(16.dp)
-            )
+        when(selectedIndex.value){
+            0 -> {
+                Reservation()
+            }
+            1 -> {
+                Menu()
+            }
+            2 -> {
+                Reviews()
+            }
         }
+//        repeat(5) {
+//            Text(
+//                text = "description",
+//                style = MaterialTheme.typography.bodyMedium,
+//                textAlign = TextAlign.Justify,
+//                modifier = Modifier
+//                    .background(Color.White)
+//                    .padding(16.dp)
+//            )
+//        }
 
     }
 
 }
 @Composable
 fun Reservation(){
- 
+    Column(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxWidth()){
+            Column {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(painter = painterResource(id = R.drawable.card_icon), contentDescription = "", tint = RedCard, modifier = Modifier.padding(6.dp).size(36.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
+                }
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(painter = painterResource(id = R.drawable.credit_card), contentDescription = "", tint = RedCard, modifier = Modifier.padding(6.dp).size(40.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
+                }
+
+            }
+
+        }
+    }
+}
+
+@Composable
+fun Menu(){
+    Column(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxWidth()){
+            Column {
+                Row {
+//                    Icon(painter = painterResource(id = R.drawable.card_icon), contentDescription = "")
+                    Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
+                }
+                Icon(painter = painterResource(id = R.drawable.credit_card), contentDescription = "")
+                Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
+            }
+
+        }
+    }
+}
+
+@Composable
+fun Reviews(){
     Column(modifier = Modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxWidth()){
             Column {
@@ -178,12 +235,12 @@ fun Reservation(){
                     Icon(painter = painterResource(id = R.drawable.card_icon), contentDescription = "")
                     Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
                 }
-                Icon(painter = painterResource(id = R.drawable.card_icon), contentDescription = "")
+//                Icon(painter = painterResource(id = R.drawable.credit_card), contentDescription = "")
                 Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
             }
 
         }
     }
-
 }
+
 
