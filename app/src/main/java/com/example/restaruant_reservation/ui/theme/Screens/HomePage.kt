@@ -182,7 +182,6 @@ fun homePage(navController: NavController) {
                     fontFamily = fontFamily,
                     fontSize = 18.sp
                 )
-                Text(text = "See all",color = Color.White)
             }
 
         }
