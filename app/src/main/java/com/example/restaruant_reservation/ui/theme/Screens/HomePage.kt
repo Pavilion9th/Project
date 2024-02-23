@@ -44,6 +44,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -60,6 +62,8 @@ import java.time.format.TextStyle
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun homePage(navController: NavController) {
+    val fontFamily = FontFamily(Font(R.font.montserratbold))
+    val bold = FontFamily(Font(R.font.montserratbolditalic))
     var text by remember {
         mutableStateOf("")
     }
@@ -118,13 +122,17 @@ fun homePage(navController: NavController) {
         SearchBar()
         Card(
             modifier = Modifier
-                .width(330.dp).clickable {  }
-                .height(150.dp)
-            ,
+                .width(330.dp)
+                .clickable { }
+                .height(150.dp),
             colors = CardDefaults.cardColors(containerColor = Pink10)
         ) {
-            Row (modifier = Modifier.fillMaxSize()){
-                Column(modifier = Modifier.width(165.dp).height(150.dp)) {
+            Row(modifier = Modifier.fillMaxSize()) {
+                Column(
+                    modifier = Modifier
+                        .width(165.dp)
+                        .height(150.dp)
+                ) {
 
 
                     Image(
@@ -140,7 +148,13 @@ fun homePage(navController: NavController) {
                             .size(100.dp)
                     )
                 }
-                Column(modifier = Modifier.width(165.dp).height(150.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                Column(
+                    modifier = Modifier
+                        .width(165.dp)
+                        .height(150.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
 
 
                     Image(
@@ -149,6 +163,28 @@ fun homePage(navController: NavController) {
                     )
                 }
             }
+        }
+
+        Card(
+            modifier = Modifier
+                .height(260.dp)
+                .fillMaxWidth()
+                .padding(10.dp),
+            colors = CardDefaults.cardColors(containerColor = BgColor)
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = "Best Seller",
+                    color = Brown,
+                    fontFamily = fontFamily,
+                    fontSize = 18.sp
+                )
+                Text(text = "See all",color = Color.White)
+            }
+
         }
     }
 }

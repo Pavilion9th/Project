@@ -16,7 +16,7 @@ import com.example.restaruant_reservation.ui.theme.Screens.third
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screens.Reservation.route) {
+    NavHost(navController = navController, startDestination = Screens.HomePage.route) {
         composable(route = Screens.First.route) {
             first(navController = navController)
         }
