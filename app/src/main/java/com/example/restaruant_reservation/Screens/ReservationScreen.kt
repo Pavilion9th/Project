@@ -256,7 +256,8 @@ fun Reservation() {
     }
 
     val dateDialogState = rememberMaterialDialogState()
-    val timeDialogState = rememberMaterialDialogState()
+    val StartTimeDialogState = rememberMaterialDialogState()
+    val EndTimeDialogState = rememberMaterialDialogState()
     Column(modifier = Modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxWidth()) {
             Column {
@@ -313,8 +314,7 @@ fun Reservation() {
 
                     Text(
                         modifier = Modifier
-                            .padding(4.dp)
-                            .clickable { timeDialogState.show() },
+                            .padding(4.dp),
                         text = "Pick your time",
                         fontSize = 20.sp,
                         color = White,
@@ -322,14 +322,14 @@ fun Reservation() {
                     ) }
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        modifier = Modifier.clickable { timeDialogState.show() },
+                        modifier = Modifier.clickable { StartTimeDialogState.show() },
                         text = formattedStartTime,
                         fontSize = 20.sp,
                         fontFamily = FontFamily(Font(R.font.montserratbold))
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        modifier = Modifier.clickable { timeDialogState.show() },
+                        modifier = Modifier.clickable { EndTimeDialogState.show() },
                         text = formattedEndTime,
                         fontSize = 20.sp,
                         fontFamily = FontFamily(Font(R.font.montserratbold))
@@ -360,7 +360,7 @@ fun Reservation() {
                     }
                 }
                 MaterialDialog(
-                    dialogState = timeDialogState,
+                    dialogState = StartTimeDialogState,
                     buttons = {
                         positiveButton(text = "Ok") {
                             Toast.makeText(
@@ -381,7 +381,7 @@ fun Reservation() {
                     }
                 }
                 MaterialDialog(
-                    dialogState = timeDialogState,
+                    dialogState = EndTimeDialogState,
                     buttons = {
                         positiveButton(text = "Ok") {
                             Toast.makeText(
