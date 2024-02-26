@@ -13,7 +13,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.restaruant_reservation.ui.theme.Restaruant_ReservationTheme
-import com.example.restaruant_reservation.ui.theme.navigation.NavGraph
+import com.example.restaruant_reservation.navigation.NavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

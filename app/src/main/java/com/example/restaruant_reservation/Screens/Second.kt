@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.ui.theme.Screens
+package com.example.restaruant_reservation.Screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,7 +16,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,17 +25,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.restaruant_reservation.R
 import com.example.restaruant_reservation.ui.theme.BgColor
 import com.example.restaruant_reservation.ui.theme.Brown
-import com.example.restaruant_reservation.ui.theme.navigation.Screens
+import com.example.restaruant_reservation.navigation.Screens
 
 @Composable
-fun first(navController: NavController) {
+fun second(navController: NavController) {
     val fontFamily = FontFamily(Font(R.font.montserratbold))
     val bold = FontFamily(Font(R.font.montserratbolditalic))
     Column(
@@ -66,22 +64,22 @@ fun first(navController: NavController) {
 
         }
         Image(
-            painter = painterResource(id = R.drawable.img),
-            contentDescription = "locations",
+            painter = painterResource(id = R.drawable.img2),
+            contentDescription = "telephone",
             modifier = Modifier.size(240.dp)
         )
 
         Text(
-            text = "Nearby Restaurants",
+            text = "Convenient",
             fontSize = 21.sp,
             modifier = Modifier.padding(top = 10.dp),
             fontFamily = fontFamily,
             color = Brown
         )
         Text(
-            text = "Don't have to go far to find a good restaurant",
+            text = "Online dish reservation",
             fontSize = 16.sp,
-            fontFamily=fontFamily,
+            fontFamily = fontFamily,
             color = Brown,
             modifier = Modifier.padding(top = 20.dp, bottom = 80.dp)
         )
@@ -97,10 +95,22 @@ fun first(navController: NavController) {
                 modifier = Modifier.clickable { navController.navigate((Screens.Login.route)) })
             Row {
 
+                Icon(
+                    imageVector = Icons.Default.FavoriteBorder,
+                    contentDescription = "Favorite",
+                    tint = Brown
+                )
+                Icon(
+                    imageVector = Icons.Default.Favorite,
+                    contentDescription = "Favorite",
+                    tint = Brown
+                )
 
-                Icon(imageVector = Icons.Default.Favorite, contentDescription = "Favorite", tint = Brown)
-                Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Favorite", tint = Brown)
-                Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Favorite", tint = Brown)
+                Icon(
+                    imageVector = Icons.Default.FavoriteBorder,
+                    contentDescription = "Favorite",
+                    tint = Brown
+                )
             }
 //            Image(
 //                painter = painterResource(id = R.drawable.dods1),
@@ -110,7 +120,7 @@ fun first(navController: NavController) {
                 imageVector = Icons.Default.ArrowForward,
                 contentDescription = "description",
                 tint = Brown,
-                modifier = Modifier.clickable { navController.navigate((Screens.Second.route)) })
+                modifier = Modifier.clickable { navController.navigate((Screens.Third.route)) })
         }
     }
 }

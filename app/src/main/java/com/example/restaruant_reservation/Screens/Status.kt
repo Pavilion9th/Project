@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.ui.theme.Screens
+package com.example.restaruant_reservation.Screens
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController

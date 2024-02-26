@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.ui.theme.Screens
+package com.example.restaruant_reservation.Screens
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -55,7 +55,7 @@ import com.example.restaruant_reservation.R
 import com.example.restaruant_reservation.ui.theme.BgColor
 import com.example.restaruant_reservation.ui.theme.Brown
 import com.example.restaruant_reservation.ui.theme.Pink10
-import com.example.restaruant_reservation.ui.theme.navigation.Screens
+import com.example.restaruant_reservation.navigation.Screens
 import com.google.android.material.search.SearchBar
 import java.time.format.TextStyle
 

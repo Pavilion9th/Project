@@ -83,4 +83,7 @@ dependencies {
 
     implementation ("com.google.accompanist:accompanist-pager-indicators:0.27.1")
     implementation ("androidx.compose.foundation:foundation:1.6.2")
+
+    implementation ("io.github.vanpra.compose-material-dialogs:datetime:0.8.1-rc")
+    coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.0.4")
 }

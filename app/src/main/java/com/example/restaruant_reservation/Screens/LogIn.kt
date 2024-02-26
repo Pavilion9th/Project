@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.ui.theme.Screens
+package com.example.restaruant_reservation.Screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -49,7 +49,7 @@ import com.example.restaruant_reservation.ui.theme.Red1
 import com.example.restaruant_reservation.ui.theme.Red2
 import com.example.restaruant_reservation.ui.theme.White
 import com.example.restaruant_reservation.ui.theme.humanColor
-import com.example.restaruant_reservation.ui.theme.navigation.Screens
+import com.example.restaruant_reservation.navigation.Screens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
