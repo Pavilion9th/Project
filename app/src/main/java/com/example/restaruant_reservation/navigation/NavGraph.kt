@@ -7,11 +7,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.restaruant_reservation.Screens.ReservationScreen
 import com.example.restaruant_reservation.Screens.first
 import com.example.restaruant_reservation.Screens.forgotPassword1
-import com.example.restaruant_reservation.Screens.homePage
 import com.example.restaruant_reservation.Screens.login
 import com.example.restaruant_reservation.Screens.second
 import com.example.restaruant_reservation.Screens.signUp
 import com.example.restaruant_reservation.Screens.third
+import com.example.restaruant_reservation.ui.theme.Screens.homePage
 
 @Composable
 fun NavGraph() {
