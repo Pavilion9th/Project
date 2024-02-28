@@ -21,6 +21,5 @@ val TextColor = Color(0xFF333333)
 val Red2 = Color(0xFFAD3F32)
 val humanColor = Color(0xFFB2A1A1)
 val TransparentWhite = Color(0x4DFFFFFF)
-val TransparentWhite2 = Color(0x66FFFFFF)
-
+val Gray= Color(0xFF999999)
 val Pink10 = Color(0xFFE9B7B2)
