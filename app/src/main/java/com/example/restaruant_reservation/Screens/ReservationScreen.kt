@@ -333,6 +333,7 @@ fun Reservation() {
                         text = formattedEndTime,
                         fontSize = 20.sp,
                         fontFamily = FontFamily(Font(R.font.montserratbold))
+
                     )
 
                 }
