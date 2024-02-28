@@ -58,14 +58,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.wear.compose.material.ContentAlpha
 import com.example.restaruant_reservation.R
+import com.example.restaruant_reservation.navigation.Screens
 import com.example.restaruant_reservation.ui.theme.BgColor
 import com.example.restaruant_reservation.ui.theme.Brown
 import com.example.restaruant_reservation.ui.theme.Gray
 import com.example.restaruant_reservation.ui.theme.Pink10
 import com.example.restaruant_reservation.ui.theme.Red2
-import com.example.restaruant_reservation.ui.theme.White
-import com.example.restaruant_reservation.ui.theme.navigation.Screens
-import com.google.android.material.search.SearchBar
 import java.time.format.TextStyle
 
 @RequiresApi(Build.VERSION_CODES.O)

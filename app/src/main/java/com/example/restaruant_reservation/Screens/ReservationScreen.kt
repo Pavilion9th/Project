@@ -23,11 +23,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Checkbox
 import androidx.compose.material.darkColors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +38,8 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -63,6 +67,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.restaruant_reservation.R
+import com.example.restaruant_reservation.ui.theme.BgColor
 import com.example.restaruant_reservation.ui.theme.BlueLight
 import com.example.restaruant_reservation.ui.theme.Red1
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
@@ -99,7 +104,7 @@ fun ReservationScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(BgColor)
             .verticalScroll(rememberScrollState())
     ) {
         Box(modifier = Modifier.fillMaxWidth()) {
@@ -221,6 +226,7 @@ fun ReservationScreen(navController: NavController) {
 
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Reservation() {
     val context = LocalContext.current
@@ -258,83 +264,129 @@ fun Reservation() {
     val dateDialogState = rememberMaterialDialogState()
     val StartTimeDialogState = rememberMaterialDialogState()
     val EndTimeDialogState = rememberMaterialDialogState()
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(BgColor)
+    ) {
         Box(modifier = Modifier.fillMaxWidth()) {
             Column {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.card_icon),
-                        contentDescription = "",
-                        tint = RedCard,
-                        modifier = Modifier
-                            .padding(6.dp)
-                            .size(36.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
-                }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.credit_card),
-                        contentDescription = "",
-                        tint = RedCard,
-                        modifier = Modifier
-                            .padding(6.dp)
-                            .size(40.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
-                }
-                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 5.dp)) {
-
-                        Spacer(modifier = Modifier.width(8.dp))
-                    Card(colors = CardDefaults.cardColors(containerColor = Red1)) {
-                        Text(
+                Card(
+                    colors = CardDefaults.cardColors(Color.White),
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth()
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.card_icon),
+                            contentDescription = "",
+                            tint = RedCard,
                             modifier = Modifier
-                                .clickable { dateDialogState.show() }
-                                .padding(4.dp),
-                            text = "Pick your date",
-                            color = White,
-                            fontSize = 20.sp,
-                            fontFamily = FontFamily(Font(R.font.montserratbold)),
-                        )}
-                    Spacer(modifier = Modifier.width(12.dp))
+                                .padding(6.dp)
+                                .size(36.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(text = "Must have Vaccinated Card ", fontSize = 18.sp)
+                    }
+                }
+                Card(
+                    colors = CardDefaults.cardColors(Color.White),
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.credit_card),
+                            contentDescription = "",
+                            tint = RedCard,
+                            modifier = Modifier
+                                .padding(6.dp)
+                                .size(40.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(text = "Must have Vaccinated Card", fontSize = 18.sp)
+                    }
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 3.dp)
+                ) {
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
                     Text(
-                        modifier = Modifier.clickable { dateDialogState.show() },
-                        text = formattedDate,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .clickable { dateDialogState.show() }
+                            .padding(4.dp),
+                        text = "Pick your date",
+                        color = Color.Black,
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily(Font(R.font.montserratbold)),
                     )
+
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(White, RoundedCornerShape(12.dp))
+                            .clickable { dateDialogState.show() }) {
+                        Text(
+                            text = formattedDate,
+                            fontSize = 18.sp,
+                            modifier = Modifier.padding(6.dp),
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+
                 }
 
 
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 3.dp)
+                ) {
                     Spacer(modifier = Modifier.width(8.dp))
-                    Card(colors = CardDefaults.cardColors(containerColor = Red1)) {
+
 
                     Text(
                         modifier = Modifier
                             .padding(4.dp),
                         text = "Pick your time",
-                        fontSize = 20.sp,
-                        color = White,
-                        fontFamily = FontFamily(Font(R.font.montserratbold))
-                    ) }
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Text(
-                        modifier = Modifier.clickable { StartTimeDialogState.show() },
-                        text = formattedStartTime,
-                        fontSize = 20.sp,
+                        fontSize = 18.sp,
+                        color = Color.Black,
                         fontFamily = FontFamily(Font(R.font.montserratbold))
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Text(
-                        modifier = Modifier.clickable { EndTimeDialogState.show() },
-                        text = formattedEndTime,
-                        fontSize = 20.sp,
-                        fontFamily = FontFamily(Font(R.font.montserratbold))
 
-                    )
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(White, RoundedCornerShape(12.dp))
+                            .clickable { StartTimeDialogState.show() },
+                    ) {
+                        Text(
+                            text = formattedStartTime,
+                            fontSize = 18.sp,
+                            modifier = Modifier.padding(6.dp),
+                            fontFamily = FontFamily(Font(R.font.montserratbold))
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(White, RoundedCornerShape(12.dp))
+                            .clickable { EndTimeDialogState.show() })
+                    {
+                        Text(
+                            text = formattedEndTime,
+                            fontSize = 18.sp,
+                            modifier = Modifier.padding(6.dp),
+                            fontFamily = FontFamily(Font(R.font.montserratbold))
+
+                        )
+                    }
+
 
                 }
                 MaterialDialog(
@@ -402,6 +454,70 @@ fun Reservation() {
                         EndTime = it
                     }
                 }
+                Row(
+                    Modifier.padding(vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text(text = "How many people?", fontSize = 18.sp)
+                    Spacer(modifier = Modifier.width(12.dp))
+                    IconButton(
+                        onClick = { /*TODO*/ }, modifier = Modifier
+                            .padding(16.dp)
+                            .height(20.dp)
+                            .width(20.dp)
+                            .background(White, RoundedCornerShape(16.dp))
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.minus),
+                            contentDescription = "minus",
+                            tint = Color.Black
+                        )
+
+                    }
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(text = "5", fontSize = 18.sp)
+                    Spacer(modifier = Modifier.width(4.dp))
+                    IconButton(
+                        onClick = { /*TODO*/ }, modifier = Modifier
+                            .padding(16.dp)
+                            .height(24.dp)
+                            .width(24.dp)
+                            .background(White, RoundedCornerShape(16.dp))
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.plus),
+                            contentDescription = "plus",
+                            tint = Color.Black
+                        )
+
+                    }
+
+                }
+                val vaccineGreenPasses = remember {
+                    mutableStateOf(false)
+                }
+                Row(
+                    Modifier.padding(vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = vaccineGreenPasses.value,
+                        onCheckedChange = { vaccineGreenPasses.value = !vaccineGreenPasses.value })
+                    Text(text = "Vaccine green passes", fontSize = 18.sp)
+                }
+                val note = remember {
+                    mutableStateOf("")
+                }
+                Text(text = "Notes", fontSize = 18.sp, modifier = Modifier.padding(horizontal = 16.dp))
+                TextField(
+                    value = note.value,
+                    onValueChange = { note.value = it },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    maxLines = 5, singleLine = false, colors = TextFieldDefaults.textFieldColors(containerColor = Color.White)
+                )
             }
 
         }
