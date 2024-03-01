@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,6 +18,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -47,6 +50,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -58,6 +62,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.wear.compose.material.ContentAlpha
 import com.example.restaruant_reservation.R
+import com.example.restaruant_reservation.model.Food
 import com.example.restaruant_reservation.navigation.Screens
 import com.example.restaruant_reservation.ui.theme.BgColor
 import com.example.restaruant_reservation.ui.theme.Brown
@@ -129,7 +134,7 @@ fun homePage(navController: NavController) {
         SearchBar()
         Card(modifier = Modifier
             .width(330.dp)
-            .clickable { }
+            .clickable { navController.navigate(Screens.HappyDeals.route) }
             .height(150.dp),
             colors = CardDefaults.cardColors(containerColor = Pink10)) {
             Row(modifier = Modifier.fillMaxSize()) {
@@ -179,46 +184,75 @@ fun homePage(navController: NavController) {
             Text(
                 text = "Best Seller", color = Brown, fontFamily = fontFamily, fontSize = 18.sp
             )
-            Text(text = "See all >", color = Gray, fontFamily = bold, fontSize = 14.sp)
+            Text(
+                text = "See all >",
+                color = Gray,
+                fontFamily = bold,
+                fontSize = 14.sp,
+                modifier = Modifier.clickable { navController.navigate(Screens.BestSeller.route) })
         }
-        Card(
-            modifier = Modifier
-                .width(150.dp)
-                .height(222.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White)
+        val list = listOf(
+            Food("arancini", R.drawable.arancini, "Olmazor tumani"),
+            Food("spaghetti", R.drawable.spagetti, "Chilonzor tumani"),
+            Food("pizza", R.drawable.pizza2, "Yashnobod tumani"),
+        )
+        LazyRow(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Row (modifier = Modifier.fillMaxWidth().height(130.dp)){
-                Image(
-                    painter = painterResource(id = R.drawable.arancini),
-                    contentDescription = "arancini",
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
-            Column(
-                modifier = Modifier,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-
-                Text(text = "Beef Ribs", fontSize = 18.sp, fontWeight = FontWeight.W900)
-                Text(text = "Beef Ribs", fontSize = 12.sp, fontWeight = FontWeight.Medium)
-                TextButton(
-                    onClick = { /*TODO*/ },
+            items(list.size) {
+                Spacer(modifier = Modifier.width(6.dp))
+                Card(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 6.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = ButtonDefaults.textButtonColors(
-                        Red2
-                    )
+                        .width(150.dp)
+                        .height(222.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color.White)
                 ) {
-                    Text(text = "Reserve", color = Color.White)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(130.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = list[it].image),
+                            contentDescription = "arancini",
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+                    Column(
+                        modifier = Modifier,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = list[it].name,
+                            fontSize = 18.sp,
+                            fontFamily = fontFamily,
+                            color = Brown
+                        )
+                        Text(text = list[it].location, fontSize = 12.sp, fontFamily = fontFamily, color = Brown)
+                        TextButton(
+                            onClick = { /*TODO*/ },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 6.dp),
+                            shape = RoundedCornerShape(12.dp),
+                            colors = ButtonDefaults.textButtonColors(
+                                Red2
+                            )
+                        ) {
+                            Text(text = "Reserve", color = Color.White)
+                        }
+                    }
                 }
+                Spacer(modifier = Modifier.width(6.dp))
             }
+
         }
-
-
     }
+
+
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

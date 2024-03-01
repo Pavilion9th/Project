@@ -5,18 +5,22 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.restaruant_reservation.Screens.ReservationScreen
+import com.example.restaruant_reservation.Screens.bestSeller
 import com.example.restaruant_reservation.Screens.first
 import com.example.restaruant_reservation.Screens.forgotPassword1
+import com.example.restaruant_reservation.Screens.happyDeals
 import com.example.restaruant_reservation.Screens.login
+import com.example.restaruant_reservation.Screens.notifications
 import com.example.restaruant_reservation.Screens.second
 import com.example.restaruant_reservation.Screens.signUp
+import com.example.restaruant_reservation.Screens.status
 import com.example.restaruant_reservation.Screens.third
 import com.example.restaruant_reservation.ui.theme.Screens.homePage
 
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screens.Reservation.route) {
+    NavHost(navController = navController, startDestination = Screens.HomePage.route) {
         composable(route = Screens.First.route) {
             first(navController = navController)
         }
@@ -41,6 +45,18 @@ fun NavGraph() {
         }
         composable(route = Screens.Reservation.route) {
             ReservationScreen(navController = navController)
+        }
+        composable(route = Screens.BestSeller.route) {
+            bestSeller(navController = navController)
+        }
+        composable(route = Screens.HappyDeals.route) {
+            happyDeals(navController = navController)
+        }
+        composable(route = Screens.Notifications.route) {
+            notifications(navController = navController)
+        }
+        composable(route = Screens.Status.route) {
+            status(navController = navController)
         }
     }
 }
