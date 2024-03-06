@@ -1,6 +1,5 @@
-package com.example.restaruant_reservation.Screens
+package com.example.restaruant_reservation.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,13 +24,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -50,25 +46,13 @@ import com.example.restaruant_reservation.ui.theme.White
 import com.example.restaruant_reservation.ui.theme.humanColor
 import com.example.restaruant_reservation.navigation.Screens
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun signUp(navController: NavController) {
-    val context = LocalContext.current
-
-    val fullName = remember {
-        mutableStateOf("")
-    }
-    val phoneNumber = remember {
-        mutableStateOf("")
-    }
-    val email = remember {
+fun login(navController: NavController) {
+    val text = remember {
         mutableStateOf("")
     }
     val password = remember {
-        mutableStateOf("")
-    }
-    val confirmPassword = remember {
         mutableStateOf("")
     }
 
@@ -83,9 +67,7 @@ fun signUp(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 65.dp),
+            modifier = Modifier.fillMaxWidth().padding(top=65.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -110,10 +92,10 @@ fun signUp(navController: NavController) {
                 modifier = Modifier
                     .padding(top = 15.dp, bottom = 15.dp)
                     .width(335.dp),
-                value = fullName.value,
-                onValueChange = { fullName.value = it },
+                value = text.value,
+                onValueChange = { text.value = it },
                 maxLines = 1,
-                placeholder = { Text(text = "Full name") },
+                placeholder = { Text(text = "Enter your phone number ") },
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = humanColor,
                     cursorColor = Brown,
@@ -124,53 +106,12 @@ fun signUp(navController: NavController) {
 //                visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
             )
-            var msg by remember { mutableStateOf("") }
-            TextField(
-                modifier = Modifier.width(335.dp),
-                value = phoneNumber.value,
-                onValueChange = {
-                    phoneNumber.value = it
-                    msg = if (it[0] == '+') {
-                        ""
-                    } else {
-                        "incorrect number"
-                    }
-                },
-                maxLines = 1,
-                placeholder = { Text(text = "Phone number") },
-                colors = TextFieldDefaults.textFieldColors(
-                    textColor = humanColor,
-                    cursorColor = Brown,
-                    containerColor = White,
-
-                    ),
-                shape = RoundedCornerShape(12.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-            )
-            Text(msg)
-            TextField(
-                modifier = Modifier
-                    .width(335.dp)
-                    .padding(bottom = 15.dp),
-                value = email.value,
-                onValueChange = { email.value = it },
-                maxLines = 1,
-                placeholder = { Text(text = "Email") },
-                colors = TextFieldDefaults.textFieldColors(
-                    textColor = humanColor,
-                    cursorColor = Brown,
-                    containerColor = White,
-
-                    ),
-                shape = RoundedCornerShape(12.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
-            )
             TextField(
                 modifier = Modifier.width(335.dp),
                 value = password.value,
                 onValueChange = { password.value = it },
                 maxLines = 1,
-                placeholder = { Text(text = "Password") },
+                placeholder = { Text(text = "Enter your password") },
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = humanColor,
                     cursorColor = Brown,
@@ -181,71 +122,36 @@ fun signUp(navController: NavController) {
                 shape = RoundedCornerShape(12.dp),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
             )
-            TextField(
-                modifier = Modifier
-                    .width(335.dp)
-                    .padding(top = 15.dp, bottom = 15.dp),
-                value = confirmPassword.value,
-                onValueChange = { confirmPassword.value = it },
-                maxLines = 1,
-                placeholder = { Text(text = "Confirm password") },
-                colors = TextFieldDefaults.textFieldColors(
-                    textColor = humanColor,
-                    cursorColor = Brown,
-                    containerColor = White,
+            Row(modifier = Modifier.height(50.dp), verticalAlignment = Alignment.CenterVertically) {
+                Checkbox(
+                    checked = checked.value,
+                    onCheckedChange = { isChecked -> checked.value = isChecked }
+                )
+                Text(
+                    if (checked.value) "don't remember" else "remember me", fontSize = 14.sp,
+                    modifier = Modifier.padding(end = 15.dp),
+                    fontFamily = fontFamily,
+                    color = Black
+                )
+                Text(
+                    text = "forgot password?", fontSize = 14.sp,
+                    modifier = Modifier
+                        .padding(vertical = 0.dp)
+                        .clickable { navController.navigate(Screens.ForgotPassword1.route) },
+                    fontFamily = fontFamily,
+                    color = Red1,
 
-                    ),
-                visualTransformation = PasswordVisualTransformation(),
-                shape = RoundedCornerShape(12.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
-            )
-//                Row(modifier = Modifier.height(50.dp), verticalAlignment = Alignment.CenterVertically) {
-//                    Checkbox(
-//                        checked = checked.value,
-//                        onCheckedChange = { isChecked -> checked.value = isChecked }
-//                    )
-//                    Text(
-//                        if (checked.value) "don't remember" else "remember me", fontSize = 14.sp,
-//                        modifier = Modifier.padding(end = 15.dp),
-//                        fontFamily = fontFamily,
-//                        color = Black
-//                    )
-//                    Text(
-//                        text = "forgot password?", fontSize = 14.sp,
-//                        modifier = Modifier
-//                            .padding(vertical = 0.dp)
-//                            .clickable { navController.navigate(Screens.ForgotPassword1.route) },
-//                        fontFamily = fontFamily,
-//                        color = Red1,
-//
-//                        )
-//
-//                }
+                    )
+
+            }
             Button(
-                onClick = {
-                    if (fullName.value.isEmpty() || phoneNumber.value.length < 12 || email.value.length < 11 || email.value.takeLast(
-                            10
-                        ) != "@gmail.com" || password.value.length < 7 || password.value!=confirmPassword.value
-                    ) {
-                        Toast.makeText(context,"Fill all of them correctly",Toast.LENGTH_SHORT).show()
-                        return@Button
-                    }
-
-                    else{
-                        Toast.makeText(context,"Successfully signed up", Toast.LENGTH_SHORT).show()
-                        navController.navigate(Screens.HomePage.route){
-                            popUpTo(navController.graph.id){
-                                inclusive=true
-                            }
-                        }
-                    }
-                }, modifier = Modifier
+                onClick = { navController.navigate(Screens.HomePage.route) }, modifier = Modifier
                     .width(327.dp)
                     .height(44.dp), colors = ButtonDefaults.buttonColors(containerColor = Red2),
                 shape = RoundedCornerShape(7.dp)
             ) {
                 Text(
-                    text = "Signup", fontSize = 18.sp,
+                    text = "Login", fontSize = 18.sp,
                     modifier = Modifier
                         .padding(vertical = 0.dp)
                         .clickable { navController.navigate(Screens.HomePage.route) },
@@ -253,14 +159,13 @@ fun signUp(navController: NavController) {
                 )
             }
             Text(
-                text = "Already have account?Log in", fontSize = 14.sp,
+                text = "New here? Register", fontSize = 14.sp,
                 modifier = Modifier
                     .padding(vertical = 10.dp)
-                    .clickable { navController.navigate(Screens.Login.route) },
+                    .clickable { navController.navigate(Screens.SignUp.route) },
                 fontFamily = fontFamily,
                 color = Red1,
             )
         }
     }
-
 }

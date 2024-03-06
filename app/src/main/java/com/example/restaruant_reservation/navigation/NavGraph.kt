@@ -4,23 +4,24 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.restaruant_reservation.Screens.ReservationScreen
-import com.example.restaruant_reservation.Screens.bestSeller
-import com.example.restaruant_reservation.Screens.first
-import com.example.restaruant_reservation.Screens.forgotPassword1
-import com.example.restaruant_reservation.Screens.happyDeals
-import com.example.restaruant_reservation.Screens.login
-import com.example.restaruant_reservation.Screens.notifications
-import com.example.restaruant_reservation.Screens.second
-import com.example.restaruant_reservation.Screens.signUp
-import com.example.restaruant_reservation.Screens.status
-import com.example.restaruant_reservation.Screens.third
+import com.example.restaruant_reservation.screens.ReserveBottomSheet
+import com.example.restaruant_reservation.screens.ReservationScreen
+import com.example.restaruant_reservation.screens.bestSeller
+import com.example.restaruant_reservation.screens.first
+import com.example.restaruant_reservation.screens.forgotPassword1
+import com.example.restaruant_reservation.screens.happyDeals
+import com.example.restaruant_reservation.screens.login
+import com.example.restaruant_reservation.screens.notifications
+import com.example.restaruant_reservation.screens.second
+import com.example.restaruant_reservation.screens.signUp
+import com.example.restaruant_reservation.screens.status
+import com.example.restaruant_reservation.screens.third
 import com.example.restaruant_reservation.ui.theme.Screens.homePage
 
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screens.HomePage.route) {
+    NavHost(navController = navController, startDestination = Screens.ConfirmReservation.route) {
         composable(route = Screens.First.route) {
             first(navController = navController)
         }
@@ -36,6 +37,9 @@ fun NavGraph() {
         }
         composable(route = Screens.HomePage.route) {
             homePage(navController = navController)
+        }
+        composable(route = Screens.ConfirmReservation.route) {
+            ReserveBottomSheet(navController = navController)
         }
         composable(route = Screens.ForgotPassword1.route) {
             forgotPassword1(navController = navController)

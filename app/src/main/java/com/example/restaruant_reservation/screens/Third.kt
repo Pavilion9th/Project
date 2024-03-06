@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.Screens
+package com.example.restaruant_reservation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -34,7 +33,7 @@ import com.example.restaruant_reservation.ui.theme.Brown
 import com.example.restaruant_reservation.navigation.Screens
 
 @Composable
-fun second(navController: NavController) {
+fun third(navController: NavController) {
     val fontFamily = FontFamily(Font(R.font.montserratbold))
     val bold = FontFamily(Font(R.font.montserratbolditalic))
     Column(
@@ -64,20 +63,20 @@ fun second(navController: NavController) {
 
         }
         Image(
-            painter = painterResource(id = R.drawable.img2),
-            contentDescription = "telephone",
+            painter = painterResource(id = R.drawable.img3),
+            contentDescription = "dish",
             modifier = Modifier.size(240.dp)
         )
 
         Text(
-            text = "Convenient",
+            text = "Delicious",
             fontSize = 21.sp,
             modifier = Modifier.padding(top = 10.dp),
             fontFamily = fontFamily,
             color = Brown
         )
         Text(
-            text = "Online dish reservation",
+            text = "Enjoy great food with your family",
             fontSize = 16.sp,
             fontFamily = fontFamily,
             color = Brown,
@@ -100,14 +99,15 @@ fun second(navController: NavController) {
                     contentDescription = "Favorite",
                     tint = Brown
                 )
-                Icon(
-                    imageVector = Icons.Default.Favorite,
-                    contentDescription = "Favorite",
-                    tint = Brown
-                )
+
 
                 Icon(
                     imageVector = Icons.Default.FavoriteBorder,
+                    contentDescription = "Favorite",
+                    tint = Brown
+                )
+                Icon(
+                    imageVector = Icons.Default.Favorite,
                     contentDescription = "Favorite",
                     tint = Brown
                 )
@@ -120,7 +120,7 @@ fun second(navController: NavController) {
                 imageVector = Icons.Default.ArrowForward,
                 contentDescription = "description",
                 tint = Brown,
-                modifier = Modifier.clickable { navController.navigate((Screens.Third.route)) })
+                modifier = Modifier.clickable { navController.navigate((Screens.Login.route)) })
         }
     }
 }
