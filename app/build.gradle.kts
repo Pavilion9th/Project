@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.restaruant_reservation"
-        minSdk = 26
+        minSdk = 25
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

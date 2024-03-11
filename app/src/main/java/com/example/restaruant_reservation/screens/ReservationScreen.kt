@@ -1,7 +1,9 @@
 package com.example.restaruant_reservation.screens
 
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -79,12 +81,14 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
 fun PreviewReservationScreen() {
     ReservationScreen(navController = rememberNavController())
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ReservationScreen(navController: NavController) {
@@ -222,6 +226,7 @@ fun ReservationScreen(navController: NavController) {
 
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Reservation() {
@@ -311,6 +316,7 @@ fun Reservation() {
                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 3.dp)
                 ) {
 
+                    Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
                         modifier = Modifier

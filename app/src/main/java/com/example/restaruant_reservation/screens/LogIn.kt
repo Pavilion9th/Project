@@ -40,7 +40,7 @@ import com.example.restaruant_reservation.R
 import com.example.restaruant_reservation.ui.theme.BgColor
 import com.example.restaruant_reservation.ui.theme.Black
 import com.example.restaruant_reservation.ui.theme.Brown
-import com.example.restaruant_reservation.ui.theme.Red1
+import com.example.restaruant_reservation.ui.theme.RedText
 import com.example.restaruant_reservation.ui.theme.Red2
 import com.example.restaruant_reservation.ui.theme.White
 import com.example.restaruant_reservation.ui.theme.humanColor
@@ -139,7 +139,7 @@ fun login(navController: NavController) {
                         .padding(vertical = 0.dp)
                         .clickable { navController.navigate(Screens.ForgotPassword1.route) },
                     fontFamily = fontFamily,
-                    color = Red1,
+                    color = RedText,
 
                     )
 
@@ -164,7 +164,7 @@ fun login(navController: NavController) {
                     .padding(vertical = 10.dp)
                     .clickable { navController.navigate(Screens.SignUp.route) },
                 fontFamily = fontFamily,
-                color = Red1,
+                color = RedText,
             )
         }
     }

@@ -6,4 +6,6 @@ import androidx.navigation.NavController
 @Composable
 fun forgotPassword1(navController: NavController){
 
+
+
 }

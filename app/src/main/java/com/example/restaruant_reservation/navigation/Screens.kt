@@ -15,7 +15,7 @@ sealed class Screens(val route: String){
     object HappyDealsDetails: Screens("happyDealsDetails")
     object Notifications: Screens("notifications")
     object BestSeller: Screens("bestSeller")
-    object Restaurants: Screens("restaurants")
+    object RestaurantInfo: Screens("restaurantInfo")
     object Login: Screens("login")
     object SignUp: Screens("signUp")
     object ForgotPassword1: Screens("forgotPassword1")
@@ -28,5 +28,8 @@ sealed class Screens(val route: String){
     object ReviewsForm: Screens("reviewsForm")
     object ReservationInDetails: Screens("reservationInDetails")
     object ChangePassword: Screens("changePassword")
+    object AboutUs: Screens("aboutUs")
+    object ReservationScreen: Screens("reservationScreen")
+    object ReserveBottomSheet: Screens("reservationBottomSheet")
 
 }
