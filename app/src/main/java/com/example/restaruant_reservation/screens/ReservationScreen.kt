@@ -27,6 +27,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Checkbox
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
@@ -44,6 +46,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -89,7 +92,7 @@ fun PreviewReservationScreen() {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun ReservationScreen(navController: NavController) {
     val fontFamily = FontFamily(Font(R.font.montserratbold))
@@ -100,6 +103,10 @@ fun ReservationScreen(navController: NavController) {
     val selectedIndex = remember {
         mutableIntStateOf(0)
     }
+    val bottomSheetOpen = remember {
+        mutableStateOf(false)
+    }
+
 
     Column(
         modifier = Modifier
@@ -200,7 +207,7 @@ fun ReservationScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(10.dp))
         when (selectedIndex.value) {
             0 -> {
-                Reservation()
+                Reservation(bottomSheetOpen)
             }
 
             1 -> {
@@ -223,13 +230,18 @@ fun ReservationScreen(navController: NavController) {
 //        }
 
     }
+    if (bottomSheetOpen.value){
+        ModalBottomSheetLayout(sheetContent = {}) {
+            ReserveBottomSheet(navController = navController)
+        }
+    }
 
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Reservation() {
+fun Reservation(bottomSheetOpen: MutableState<Boolean>) {
     val context = LocalContext.current
     var pickedDate by remember {
         mutableStateOf(LocalDate.now())
@@ -605,7 +617,7 @@ fun Reservation() {
 
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { bottomSheetOpen.value = true},
                         modifier= Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 28.dp),
