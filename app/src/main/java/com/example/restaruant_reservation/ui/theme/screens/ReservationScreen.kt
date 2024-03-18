@@ -71,6 +71,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.restaruant_reservation.R
 import com.example.restaruant_reservation.navigation.Screens
 import com.example.restaruant_reservation.ui.theme.BgColorRes
+import com.example.restaruant_reservation.ui.theme.Brown
 import com.example.restaruant_reservation.ui.theme.Red
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import com.example.restaruant_reservation.ui.theme.RedCard
@@ -639,32 +640,124 @@ fun Reservation(navController: NavController) {
 @Composable
 fun Menu() {
     Column(modifier = Modifier.fillMaxSize()) {
-        Row(Modifier.fillMaxWidth(), ) {
+        Row(Modifier.fillMaxWidth()) {
 
-            Card(colors = CardDefaults.cardColors(Color.White)) {
+            Card(modifier= Modifier
+                .fillMaxWidth()
+                .padding(5.dp),colors = CardDefaults.cardColors(Color.White)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
                         painter = painterResource(id = R.drawable.img_1), contentDescription = "",
                         Modifier
+                            .padding(12.dp)
                             .clip(
-                                CircleShape
+                                RoundedCornerShape(16.dp)
                             )
-                            .size(60.dp), contentScale = ContentScale.Crop
+
+                            .size(120.dp), contentScale = ContentScale.Crop
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column {
-                        Text(text = "USDA Beef Ribs Finger", fontSize = 22.sp)
-                        Text(text = "Honey saucer", fontSize = 18.sp)
-                        Text(text = "Obathan sauce", fontSize = 18.sp)
-                        Text(text = "389.000 VND", fontSize = 22.sp)
+                        Text(text = "USDA Beef Ribs Finger", fontSize = 20.sp)
+                        Text(text = "Honey saucer", fontSize = 16.sp, color = Brown)
+                        Text(text = "Obathan sauce", fontSize = 16.sp, color = Brown)
+                        Text(text = "389.000 VND", fontSize = 20.sp)
                     }
 
 
+                }
+
+            }
+
         }
+        Spacer(modifier = Modifier.width(8.dp))
+        Row(Modifier.fillMaxWidth()) {
 
-    }
+            Card(modifier= Modifier
+                .fillMaxWidth()
+                .padding(5.dp),colors = CardDefaults.cardColors(Color.White)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img_3), contentDescription = "",
+                        Modifier
+                            .clip(
+                                RoundedCornerShape(16.dp)
+                            )
+                            .size(120.dp), contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column {
+                        Text(text = "LA Beef Ribs ", fontSize = 22.sp)
+                        Text(text = "Galbi sauce", fontSize = 18.sp, color = Brown)
+                        Text(text = "Obathan sauce", fontSize = 18.sp, color = Brown)
+                        Text(text = "189.000 VND", fontSize = 22.sp)
+                    }
 
-}
+
+                }
+
+            }
+
+        }
+        Spacer(modifier = Modifier.width(8.dp))
+        Row(Modifier.fillMaxWidth()) {
+
+            Card(modifier= Modifier
+                .fillMaxWidth()
+                .padding(5.dp),colors = CardDefaults.cardColors(Color.White)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img_5), contentDescription = "",
+                        Modifier
+                            .clip(
+                                RoundedCornerShape(16.dp)
+                            )
+                            .size(120.dp), contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column {
+                        Text(text = "USDA Beef Outside Skirt", fontSize = 22.sp)
+                        Text(text = "Non-marinated", fontSize = 18.sp, color = Brown)
+                        Text(text = "Obathan sauce", fontSize = 18.sp, color = Brown)
+                        Text(text = "279.000 VND", fontSize = 22.sp)
+                    }
+
+
+                }
+
+            }
+
+        }
+        Spacer(modifier = Modifier.width(8.dp))
+        Row(Modifier.fillMaxWidth()) {
+
+            Card(modifier= Modifier
+                .fillMaxWidth()
+                .padding(5.dp),colors = CardDefaults.cardColors(Color.White)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img_6), contentDescription = "",
+                        Modifier
+                            .clip(
+                                RoundedCornerShape(16.dp)
+                            )
+                            .size(120.dp), contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column {
+                        Text(text = "USDA Beef Short Plater", fontSize = 22.sp)
+                        Text(text = "Honey sauce", fontSize = 18.sp, color = Brown)
+                        Text(text = "Obathan sauce", fontSize = 18.sp, color = Brown)
+                        Text(text = "119.000 VND", fontSize = 22.sp)
+                    }
+
+
+                }
+
+            }
+
+        }
+        Spacer(modifier = Modifier.width(8.dp))
 }
 }
 
