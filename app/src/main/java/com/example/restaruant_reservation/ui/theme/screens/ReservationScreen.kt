@@ -212,12 +212,12 @@ fun ReservationScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(10.dp))
         when (selectedIndex.value) {
             0 -> {
-//                Reservation(navController)
-                Reviews()
+            Reservation(navController)
+
             }
 
             1 -> {
-                Menu()
+                Menu(navController)
             }
 
             2 -> {
@@ -640,8 +640,9 @@ fun Reservation(navController: NavController) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Menu() {
+fun Menu(navController: NavController) {
     Column(modifier = Modifier.fillMaxSize()) {
         Row(Modifier.fillMaxWidth()) {
 

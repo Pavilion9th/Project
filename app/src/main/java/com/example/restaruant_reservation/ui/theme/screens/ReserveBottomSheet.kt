@@ -68,148 +68,168 @@ fun ReserveBottomSheet(navController: NavController) {
                 RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
             )
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
     ) {
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Image(
+                painter = painterResource(id = R.drawable.img_2),
+                contentDescription = "",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(207.dp),
+                contentScale = ContentScale.Crop
+            )
+        }
         Spacer(modifier = Modifier.height(12.dp))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                painter = painterResource(id = R.drawable.location_icon),
-                contentDescription = "manzil",
-                modifier = Modifier
-                    .width(40.dp)
-                    .height(40.dp),
-                tint = Color.Red
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Text(text = addressrestaurantname)
-        }
-        Spacer(
-            modifier = Modifier
-                .width(12.dp)
-                .height(12.dp)
-        )
-
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                painter = painterResource(id = R.drawable.calendar_icon),
-                contentDescription = "sana",
-                modifier = Modifier
-                    .width(40.dp)
-                    .height(40.dp),
-                tint = Color.Red
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(text = sana)
-
-        }
-        Spacer(
-            modifier = Modifier
-                .width(12.dp)
-                .height(12.dp)
-        )
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                painter = painterResource(id = R.drawable.clock_icon),
-                contentDescription = "vatq",
-                modifier = Modifier
-                    .width(40.dp)
-                    .height(40.dp),
-                tint = Color.Red
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(text = vaqt)
-
-        }
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                painter = painterResource(id = R.drawable.people_icon),
-                contentDescription = "people",
-                modifier = Modifier
-                    .width(40.dp)
-                    .height(40.dp),
-                tint = Color.Red
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(text = people)
-
-        }
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Card(colors = CardDefaults.cardColors(Color.White)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(
-                    painter = painterResource(id = R.drawable.person_img), contentDescription = "",
-                    Modifier
-                        .clip(
-                            CircleShape
-                        )
-                        .size(60.dp), contentScale = ContentScale.Crop
-                )
-                Spacer(modifier = Modifier.width(16.dp))
-                Column {
-                    Text(text = name)
-                    Text(text = number)
-                    Text(text = gmail)
-                }
-
-            }
-
-
-        }
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                painter = painterResource(id = R.drawable.pencil_icon),
-                contentDescription = "notes ",
-                modifier = Modifier
-                    .width(30.dp)
-                    .height(30.dp),
-                tint = Color.Red
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(text = notes)
-
-        }
-
-        Spacer(modifier = Modifier.height(10.dp))
-        Card(colors = CardDefaults.cardColors(Color.White)) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    painter = painterResource(id = R.drawable.credit_card),
-                    contentDescription = "",
-                    tint = RedCard,
+                    painter = painterResource(id = R.drawable.location_icon),
+                    contentDescription = "manzil",
                     modifier = Modifier
-                        .size(40.dp)
+                        .width(40.dp)
+                        .height(40.dp),
+                    tint = Color.Red
                 )
-                Spacer(modifier = Modifier.height(16.dp))
-                Column {
-                    Text(text = "Your deposit is 200.000VND")
-                    Text(text = "Please pay within 30 minutes. If not, your reservation will be canceled automatically.")
+                Spacer(modifier = Modifier.width(12.dp))
+
+                Text(text = addressrestaurantname)
+            }
+            Spacer(
+                modifier = Modifier
+                    .width(12.dp)
+                    .height(12.dp)
+            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painter = painterResource(id = R.drawable.calendar_icon),
+                    contentDescription = "sana",
+                    modifier = Modifier
+                        .width(40.dp)
+                        .height(40.dp),
+                    tint = Color.Red
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(text = sana)
+
+            }
+            Spacer(
+                modifier = Modifier
+                    .width(12.dp)
+                    .height(12.dp)
+            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painter = painterResource(id = R.drawable.clock_icon),
+                    contentDescription = "vatq",
+                    modifier = Modifier
+                        .width(40.dp)
+                        .height(40.dp),
+                    tint = Color.Red
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(text = vaqt)
+
+            }
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painter = painterResource(id = R.drawable.people_icon),
+                    contentDescription = "people",
+                    modifier = Modifier
+                        .width(40.dp)
+                        .height(40.dp),
+                    tint = Color.Red
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(text = people)
+
+            }
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Card(colors = CardDefaults.cardColors(Color.White)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.person_img), contentDescription = "",
+                        Modifier
+                            .clip(
+                                CircleShape
+                            )
+                            .size(60.dp), contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column {
+                        Text(text = name)
+                        Text(text = number)
+                        Text(text = gmail)
+                    }
 
                 }
 
 
             }
 
+            Spacer(modifier = Modifier.height(24.dp))
 
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(
-            onClick = {
-                dialogOpen.value = true
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 32.dp),
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painter = painterResource(id = R.drawable.pencil_icon),
+                    contentDescription = "notes ",
+                    modifier = Modifier
+                        .width(30.dp)
+                        .height(30.dp),
+                    tint = Color.Red
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(text = notes)
 
-            colors = ButtonDefaults.buttonColors(Red),
-            shape = RoundedCornerShape(12.dp)
-        ) {
-            Text(text = "CONFIRM", fontSize = 18.sp)
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+            Card(colors = CardDefaults.cardColors(Color.White)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.credit_card),
+                        contentDescription = "",
+                        tint = RedCard,
+                        modifier = Modifier
+                            .size(40.dp)
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column {
+                        Text(text = "Your deposit is 200.000VND", fontSize = 16.sp)
+
+                        Text(
+                            text = "Please pay within 30 minutes.",
+                            fontSize = 14.sp,
+                            color = Color.Red
+                        )
+
+                    }
+
+
+                }
+
+
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+            Button(
+                onClick = {
+                    dialogOpen.value = true
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp),
+
+                colors = ButtonDefaults.buttonColors(Red),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text(text = "CONFIRM", fontSize = 18.sp)
+            }
         }
+
 
 
     }
@@ -219,7 +239,8 @@ fun ReserveBottomSheet(navController: NavController) {
             TextButton(
                 onClick = {
                     dialogOpen.value = false
-                    navController.popBackStack() },
+                    navController.popBackStack()
+                },
                 shape = RoundedCornerShape(8.dp),
                 modifier =
                 Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(
@@ -228,7 +249,10 @@ fun ReserveBottomSheet(navController: NavController) {
             ) { Text(text = "OK") }
         },
         text = {
-            Column (horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()){
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Icon(
                     painter = painterResource(id = R.drawable.check_icon),
                     contentDescription = "",
