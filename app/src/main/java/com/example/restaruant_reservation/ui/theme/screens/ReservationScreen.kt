@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.screens
+package com.example.restaruant_reservation.ui.theme.screens
 
 import android.os.Build
 import android.util.Log
@@ -28,7 +28,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Checkbox
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
@@ -46,7 +45,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -56,6 +54,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -70,6 +69,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.restaruant_reservation.R
+import com.example.restaruant_reservation.navigation.Screens
 import com.example.restaruant_reservation.ui.theme.BgColorRes
 import com.example.restaruant_reservation.ui.theme.Red
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
@@ -124,7 +124,9 @@ fun ReservationScreen(navController: NavController) {
                 contentScale = ContentScale.Crop
             )
             IconButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.popBackStack()
+                },
                 modifier = Modifier
                     .padding(16.dp)
                     .height(40.dp)
@@ -207,7 +209,7 @@ fun ReservationScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(10.dp))
         when (selectedIndex.value) {
             0 -> {
-                Reservation(bottomSheetOpen)
+                Reservation(navController)
             }
 
             1 -> {
@@ -230,18 +232,14 @@ fun ReservationScreen(navController: NavController) {
 //        }
 
     }
-    if (bottomSheetOpen.value){
-        ModalBottomSheetLayout(sheetContent = {}) {
-            ReserveBottomSheet(navController = navController)
-        }
-    }
 
 }
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Reservation(bottomSheetOpen: MutableState<Boolean>) {
+fun Reservation(navController: NavController) {
     val context = LocalContext.current
     var pickedDate by remember {
         mutableStateOf(LocalDate.now())
@@ -272,6 +270,9 @@ fun Reservation(bottomSheetOpen: MutableState<Boolean>) {
                 .ofPattern("hh:mm")
                 .format(EndTime)
         }
+    }
+    val howManyPeople = remember {
+        mutableStateOf(1)
     }
 
     val dateDialogState = rememberMaterialDialogState()
@@ -474,7 +475,8 @@ fun Reservation(bottomSheetOpen: MutableState<Boolean>) {
                     Text(text = "How many people?", fontSize = 18.sp)
                     Spacer(modifier = Modifier.width(12.dp))
                     IconButton(
-                        onClick = { /*TODO*/ }, modifier = Modifier
+                        onClick = { if (howManyPeople.value > 1) howManyPeople.value -= 1 },
+                        modifier = Modifier
                             .padding(16.dp)
                             .height(20.dp)
                             .width(20.dp)
@@ -488,10 +490,11 @@ fun Reservation(bottomSheetOpen: MutableState<Boolean>) {
 
                     }
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text(text = "5", fontSize = 18.sp)
+                    Text(text = howManyPeople.value.toString())
                     Spacer(modifier = Modifier.width(4.dp))
                     IconButton(
-                        onClick = { /*TODO*/ }, modifier = Modifier
+                        onClick = { if (howManyPeople.value < 20) howManyPeople.value += 1 },
+                        modifier = Modifier
                             .padding(16.dp)
                             .height(24.dp)
                             .width(24.dp)
@@ -617,14 +620,14 @@ fun Reservation(bottomSheetOpen: MutableState<Boolean>) {
 
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                     Button(
-                        onClick = { bottomSheetOpen.value = true},
-                        modifier= Modifier
+                        onClick = { navController.navigate(Screens.ReserveScreen.route) },
+                        modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 28.dp),
                         colors = ButtonDefaults.buttonColors(Red),
                         shape = RoundedCornerShape(12.dp)
                     ) {
-                        Text(text = "RESERVE" , fontSize = 18.sp)
+                        Text(text = "RESERVE", fontSize = 18.sp)
                     }
                 }
             }
@@ -636,22 +639,35 @@ fun Reservation(bottomSheetOpen: MutableState<Boolean>) {
 @Composable
 fun Menu() {
     Column(modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier.fillMaxWidth()) {
-            Column {
-                Row {
-//                    Icon(painter = painterResource(id = R.drawable.card_icon), contentDescription = "")
-                    Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
-                }
-                Icon(
-                    painter = painterResource(id = R.drawable.credit_card),
-                    contentDescription = ""
-                )
-                Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
-            }
+        Row(Modifier.fillMaxWidth(), ) {
+
+            Card(colors = CardDefaults.cardColors(Color.White)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img_1), contentDescription = "",
+                        Modifier
+                            .clip(
+                                CircleShape
+                            )
+                            .size(60.dp), contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column {
+                        Text(text = "USDA Beef Ribs Finger", fontSize = 22.sp)
+                        Text(text = "Honey saucer", fontSize = 18.sp)
+                        Text(text = "Obathan sauce", fontSize = 18.sp)
+                        Text(text = "389.000 VND", fontSize = 22.sp)
+                    }
+
 
         }
+
     }
+
 }
+}
+}
+
 
 @Composable
 fun Reviews() {

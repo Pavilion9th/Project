@@ -7,25 +7,22 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.restaruant_reservation.Screens.aboutUs
-
 import com.example.restaruant_reservation.Screens.changePassword
-
 import com.example.restaruant_reservation.Screens.reservationHistory
 import com.example.restaruant_reservation.Screens.restaurantInfo
-
 import com.example.restaruant_reservation.Screens.status
-import com.example.restaruant_reservation.screens.ReservationScreen
-import com.example.restaruant_reservation.screens.ReserveBottomSheet
-import com.example.restaruant_reservation.screens.bestSeller
-import com.example.restaruant_reservation.screens.first
-import com.example.restaruant_reservation.screens.forgotPassword1
-import com.example.restaruant_reservation.screens.happyDeals
-import com.example.restaruant_reservation.screens.login
-import com.example.restaruant_reservation.screens.notifications
-import com.example.restaruant_reservation.screens.second
-import com.example.restaruant_reservation.screens.signUp
-import com.example.restaruant_reservation.screens.third
-import com.example.restaruant_reservation.ui.theme.Screens.homePage
+import com.example.restaruant_reservation.ui.theme.screens.homePage
+import com.example.restaruant_reservation.ui.theme.screens.ReservationScreen
+import com.example.restaruant_reservation.ui.theme.screens.ReserveBottomSheet
+import com.example.restaruant_reservation.ui.theme.screens.bestSeller
+import com.example.restaruant_reservation.ui.theme.screens.first
+import com.example.restaruant_reservation.ui.theme.screens.forgotPassword1
+import com.example.restaruant_reservation.ui.theme.screens.happyDeals
+import com.example.restaruant_reservation.ui.theme.screens.login
+import com.example.restaruant_reservation.ui.theme.screens.notifications
+import com.example.restaruant_reservation.ui.theme.screens.second
+import com.example.restaruant_reservation.ui.theme.screens.signUp
+import com.example.restaruant_reservation.ui.theme.screens.third
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -35,7 +32,6 @@ fun NavGraph() {
         composable(route = Screens.First.route) {
             first(navController = navController)
         }
-
         composable(route = Screens.Second.route) {
             second(navController = navController)
         }
@@ -59,6 +55,9 @@ fun NavGraph() {
         }
         composable(route = Screens.ReservationScreen.route) {
             ReservationScreen(navController = navController)
+        }
+        composable(route = Screens.ReserveScreen.route) {
+            ReserveBottomSheet(navController = navController)
         }
         composable(route = Screens.BestSeller.route) {
             bestSeller(navController = navController)
@@ -87,6 +86,7 @@ fun NavGraph() {
         composable(route = Screens.RestaurantInfo.route) {
             restaurantInfo(navController = navController)
         }
-
     }
 }
+
+

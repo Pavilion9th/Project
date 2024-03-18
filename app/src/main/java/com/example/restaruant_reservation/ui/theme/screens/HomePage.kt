@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.ui.theme.Screens
+package com.example.restaruant_reservation.ui.theme.screens
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -115,7 +115,7 @@ fun homePage(navController: NavController) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.img_1),
+                    painter = painterResource(id = R.drawable.location_icon),
                     contentDescription = "location",
                     modifier = Modifier
                         .width(23.dp)

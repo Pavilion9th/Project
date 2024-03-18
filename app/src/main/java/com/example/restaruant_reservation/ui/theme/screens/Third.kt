@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.screens
+package com.example.restaruant_reservation.ui.theme.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

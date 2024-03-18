@@ -1,4 +1,4 @@
-package com.example.restaruant_reservation.screens
+package com.example.restaruant_reservation.ui.theme.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,17 +10,16 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -53,9 +52,13 @@ fun ReserveBottomSheet(navController: NavController) {
     val vaqt = "18h00 - 18h30"
     val people = "2 People"
     val notes = "Window Seats"
-    val name = "Abdulloh ibn Mustafo"
+    val name = "Sardor ibn Mustafo"
     val number = "90 324 75 72"
     val gmail = "@Abdulloh.ibn.Mustafo"
+
+    val dialogOpen = remember {
+        mutableStateOf(false)
+    }
 
 
     Column(
@@ -131,7 +134,7 @@ fun ReserveBottomSheet(navController: NavController) {
             Text(text = people)
 
         }
-        Spacer(modifier =Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         Card(colors = CardDefaults.cardColors(Color.White)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -155,7 +158,7 @@ fun ReserveBottomSheet(navController: NavController) {
 
         }
 
-        Spacer(modifier =Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
@@ -195,25 +198,45 @@ fun ReserveBottomSheet(navController: NavController) {
         }
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = { },
-            modifier= Modifier
+            onClick = {
+                dialogOpen.value = true
+            },
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
 
             colors = ButtonDefaults.buttonColors(Red),
             shape = RoundedCornerShape(12.dp)
         ) {
-            Text(text = "CONFIRM" , fontSize = 18.sp)
+            Text(text = "CONFIRM", fontSize = 18.sp)
         }
 
 
     }
-}
-
-
-
-
-@Composable
-fun ReservationConfirmedBottomSheet(){
-
+    if (dialogOpen.value) AlertDialog(
+        onDismissRequest = { },
+        buttons = {
+            TextButton(
+                onClick = {
+                    dialogOpen.value = false
+                    navController.popBackStack() },
+                shape = RoundedCornerShape(8.dp),
+                modifier =
+                Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Gray
+                )
+            ) { Text(text = "OK") }
+        },
+        text = {
+            Column (horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()){
+                Icon(
+                    painter = painterResource(id = R.drawable.check_icon),
+                    contentDescription = "",
+                    tint = Color.Green,
+                    modifier = Modifier
+                        .padding(6.dp)
+                        .size(130.dp)
+                )
+            }
+        })
 }

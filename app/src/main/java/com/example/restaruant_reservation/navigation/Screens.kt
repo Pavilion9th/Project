@@ -30,6 +30,6 @@ sealed class Screens(val route: String){
     object ChangePassword: Screens("changePassword")
     object AboutUs: Screens("aboutUs")
     object ReservationScreen: Screens("reservationScreen")
-    object ReserveBottomSheet: Screens("reservationBottomSheet")
+    object ReserveScreen: Screens("reserveScreen")
 
 }
