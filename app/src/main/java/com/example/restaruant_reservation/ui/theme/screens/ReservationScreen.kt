@@ -75,8 +75,10 @@ import com.example.restaruant_reservation.ui.theme.Brown
 import com.example.restaruant_reservation.ui.theme.Red
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import com.example.restaruant_reservation.ui.theme.RedCard
+import com.example.restaruant_reservation.ui.theme.StarColor
 import com.example.restaruant_reservation.ui.theme.TransparentWhite
 import com.example.restaruant_reservation.ui.theme.White
+import com.example.restaruant_reservation.ui.theme.textColor
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.datetime.date.datepicker
 import com.vanpra.composematerialdialogs.datetime.time.timepicker
@@ -210,7 +212,8 @@ fun ReservationScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(10.dp))
         when (selectedIndex.value) {
             0 -> {
-                Reservation(navController)
+//                Reservation(navController)
+                Reviews()
             }
 
             1 -> {
@@ -642,14 +645,16 @@ fun Menu() {
     Column(modifier = Modifier.fillMaxSize()) {
         Row(Modifier.fillMaxWidth()) {
 
-            Card(modifier= Modifier
-                .fillMaxWidth()
-                .padding(5.dp),colors = CardDefaults.cardColors(Color.White)) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp), colors = CardDefaults.cardColors(Color.White)
+            ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
                         painter = painterResource(id = R.drawable.img_1), contentDescription = "",
                         Modifier
-                            .padding(12.dp)
+                            .padding(8.dp)
                             .clip(
                                 RoundedCornerShape(16.dp)
                             )
@@ -661,7 +666,7 @@ fun Menu() {
                         Text(text = "USDA Beef Ribs Finger", fontSize = 20.sp)
                         Text(text = "Honey saucer", fontSize = 16.sp, color = Brown)
                         Text(text = "Obathan sauce", fontSize = 16.sp, color = Brown)
-                        Text(text = "389.000 VND", fontSize = 20.sp)
+                        Text(text = "389.000 VND", fontSize = 20.sp, color = Color.Green)
                     }
 
 
@@ -673,13 +678,16 @@ fun Menu() {
         Spacer(modifier = Modifier.width(8.dp))
         Row(Modifier.fillMaxWidth()) {
 
-            Card(modifier= Modifier
-                .fillMaxWidth()
-                .padding(5.dp),colors = CardDefaults.cardColors(Color.White)) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp), colors = CardDefaults.cardColors(Color.White)
+            ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
                         painter = painterResource(id = R.drawable.img_3), contentDescription = "",
                         Modifier
+                            .padding(8.dp)
                             .clip(
                                 RoundedCornerShape(16.dp)
                             )
@@ -687,10 +695,10 @@ fun Menu() {
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column {
-                        Text(text = "LA Beef Ribs ", fontSize = 22.sp)
-                        Text(text = "Galbi sauce", fontSize = 18.sp, color = Brown)
-                        Text(text = "Obathan sauce", fontSize = 18.sp, color = Brown)
-                        Text(text = "189.000 VND", fontSize = 22.sp)
+                        Text(text = "LA Beef Ribs ", fontSize = 20.sp)
+                        Text(text = "Galbi sauce", fontSize = 16.sp, color = Brown)
+                        Text(text = "Obathan sauce", fontSize = 16.sp, color = Brown)
+                        Text(text = "189.000 VND", fontSize = 20.sp, color = Color.Green)
                     }
 
 
@@ -702,13 +710,16 @@ fun Menu() {
         Spacer(modifier = Modifier.width(8.dp))
         Row(Modifier.fillMaxWidth()) {
 
-            Card(modifier= Modifier
-                .fillMaxWidth()
-                .padding(5.dp),colors = CardDefaults.cardColors(Color.White)) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp), colors = CardDefaults.cardColors(Color.White)
+            ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
                         painter = painterResource(id = R.drawable.img_5), contentDescription = "",
                         Modifier
+                            .padding(8.dp)
                             .clip(
                                 RoundedCornerShape(16.dp)
                             )
@@ -716,10 +727,10 @@ fun Menu() {
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column {
-                        Text(text = "USDA Beef Outside Skirt", fontSize = 22.sp)
-                        Text(text = "Non-marinated", fontSize = 18.sp, color = Brown)
-                        Text(text = "Obathan sauce", fontSize = 18.sp, color = Brown)
-                        Text(text = "279.000 VND", fontSize = 22.sp)
+                        Text(text = "USDA Beef Outside Skirt", fontSize = 20.sp)
+                        Text(text = "Non-marinated", fontSize = 16.sp, color = Brown)
+                        Text(text = "Obathan sauce", fontSize = 16.sp, color = Brown)
+                        Text(text = "279.000 VND", fontSize = 20.sp, color = Color.Green)
                     }
 
 
@@ -731,13 +742,16 @@ fun Menu() {
         Spacer(modifier = Modifier.width(8.dp))
         Row(Modifier.fillMaxWidth()) {
 
-            Card(modifier= Modifier
-                .fillMaxWidth()
-                .padding(5.dp),colors = CardDefaults.cardColors(Color.White)) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp), colors = CardDefaults.cardColors(Color.White)
+            ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
                         painter = painterResource(id = R.drawable.img_6), contentDescription = "",
                         Modifier
+                            .padding(8.dp)
                             .clip(
                                 RoundedCornerShape(16.dp)
                             )
@@ -745,10 +759,10 @@ fun Menu() {
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column {
-                        Text(text = "USDA Beef Short Plater", fontSize = 22.sp)
-                        Text(text = "Honey sauce", fontSize = 18.sp, color = Brown)
-                        Text(text = "Obathan sauce", fontSize = 18.sp, color = Brown)
-                        Text(text = "119.000 VND", fontSize = 22.sp)
+                        Text(text = "USDA Beef Short Plater", fontSize = 20.sp)
+                        Text(text = "Honey sauce", fontSize = 16.sp, color = Brown)
+                        Text(text = "Obathan sauce", fontSize = 16.sp, color = Brown)
+                        Text(text = "119.000 VND", fontSize = 20.sp, color = Color.Green)
                     }
 
 
@@ -758,27 +772,411 @@ fun Menu() {
 
         }
         Spacer(modifier = Modifier.width(8.dp))
-}
+    }
 }
 
 
 @Composable
 fun Reviews() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier.fillMaxWidth()) {
-            Column {
-                Row {
-                    Icon(
-                        painter = painterResource(id = R.drawable.card_icon),
-                        contentDescription = ""
-                    )
-                    Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(7.dp), horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Card(colors = CardDefaults.cardColors(Color.White), modifier = Modifier.fillMaxWidth()) {
+            Column(
+                modifier = Modifier.padding(vertical = 6.dp, horizontal = 16.dp)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.person_img),
+                            contentDescription = "",
+                            Modifier
+                                .clip(
+                                    CircleShape
+                                )
+                                .size(40.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column {
+                            Text(text = "@xivilmus", fontSize = 18.sp)
+                            Text(text = "1 day ago", fontSize = 16.sp, color = textColor)
+                        }
+                    }
+                    Row {
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                    }
+
                 }
-//                Icon(painter = painterResource(id = R.drawable.credit_card), contentDescription = "")
-                Text(text = "Must have Vaccinated Card ", fontSize = 20.sp)
+                Text(
+                    text = "I would recommend this for all my friend!",
+                    fontSize = 18.sp,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
             }
 
         }
+        Spacer(modifier = Modifier.height(8.dp))
+        Card(colors = CardDefaults.cardColors(Color.White), modifier = Modifier.fillMaxWidth()) {
+            Column(
+                modifier = Modifier.padding(vertical = 6.dp, horizontal = 16.dp)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                   Row {
+                       Image(
+                           painter = painterResource(id = R.drawable.peop_img),
+                           contentDescription = "",
+                           Modifier
+                               .clip(
+                                   CircleShape
+                               )
+                               .size(40.dp),
+                           contentScale = ContentScale.Crop
+                       )
+                       Spacer(modifier = Modifier.width(16.dp))
+                       Column {
+                           Text(text = "@kristinjones", fontSize = 18.sp)
+                           Text(text = "2 day ago", fontSize = 16.sp, color = textColor)
+                       }
+                   }
+                    Row {
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                    }
+
+
+                }
+                Text(
+                    text = "I would recommend this for all my friend!",
+                    fontSize = 18.sp,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Card(colors = CardDefaults.cardColors(Color.White), modifier = Modifier.fillMaxWidth()) {
+            Column(
+                modifier = Modifier.padding(vertical = 6.dp, horizontal = 16.dp)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                    , horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.peop_img1),
+                            contentDescription = "",
+                            Modifier
+                                .clip(
+                                    CircleShape
+                                )
+                                .size(40.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column {
+                            Text(text = "@cameronwilliam", fontSize = 18.sp)
+                            Text(text = "2 day ago", fontSize = 16.sp, color = textColor)
+                        }
+                    }
+                    Row {
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = StarColor
+                        )
+                    }
+                }
+                Text(
+                    text = "I love it so much",
+                    fontSize = 18.sp,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Card(colors = CardDefaults.cardColors(Color.White), modifier = Modifier.fillMaxWidth()) {
+            Column(
+                modifier = Modifier.padding(vertical = 6.dp, horizontal = 16.dp)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                   Row {
+                       Image(
+                           painter = painterResource(id = R.drawable.peop_img2),
+                           contentDescription = "",
+                           Modifier
+                               .clip(
+                                   CircleShape
+                               )
+                               .size(40.dp),
+                           contentScale = ContentScale.Crop
+                       )
+                       Spacer(modifier = Modifier.width(16.dp))
+                       Column {
+                           Text(text = "@courtneyhenry", fontSize = 20.sp)
+                           Text(text = "1 day ago", fontSize = 16.sp, color = textColor)
+                       }
+                   }
+                    Row {
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = StarColor
+                        )
+                    }
+                   }
+                Text(
+                    text = "It’s just good",
+                    fontSize = 18.sp,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Card(colors = CardDefaults.cardColors(Color.White), modifier = Modifier.fillMaxWidth()) {
+            Column(
+                modifier = Modifier.padding(vertical = 6.dp, horizontal = 16.dp)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                   Row {
+                       Image(
+                           painter = painterResource(id = R.drawable.peop_img3),
+                           contentDescription = "",
+                           Modifier
+                               .clip(
+                                   CircleShape
+                               )
+                               .size(40.dp),
+                           contentScale = ContentScale.Crop
+                       )
+                       Spacer(modifier = Modifier.width(16.dp))
+                       Column {
+                           Text(text = "@jacobjones", fontSize = 20.sp)
+                           Text(text = "1 day ago", fontSize = 16.sp, color = textColor)
+                       }
+                   }
+                    Row {
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = Color.Red
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = StarColor
+                        )
+                        Icon(
+                            painterResource(id = R.drawable.star_img),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .width(20.dp)
+                                .height(20.dp),
+                            tint = StarColor
+                        )
+                    }
+                   }
+                Text(
+                    text = "Great dishes.",
+                    fontSize = 18.sp,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+        }
+        Spacer(modifier = Modifier.height(8.dp))
     }
 }
 
