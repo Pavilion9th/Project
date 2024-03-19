@@ -11,13 +11,13 @@ import com.example.restaruant_reservation.Screens.changePassword
 import com.example.restaruant_reservation.Screens.reservationHistory
 import com.example.restaruant_reservation.Screens.restaurantInfo
 import com.example.restaruant_reservation.Screens.status
+import com.example.restaruant_reservation.ui.theme.screens.HappyDeals
 import com.example.restaruant_reservation.ui.theme.screens.homePage
 import com.example.restaruant_reservation.ui.theme.screens.ReservationScreen
 import com.example.restaruant_reservation.ui.theme.screens.ReserveBottomSheet
 import com.example.restaruant_reservation.ui.theme.screens.bestSeller
 import com.example.restaruant_reservation.ui.theme.screens.first
 import com.example.restaruant_reservation.ui.theme.screens.forgotPassword1
-import com.example.restaruant_reservation.ui.theme.screens.happyDeals
 import com.example.restaruant_reservation.ui.theme.screens.login
 import com.example.restaruant_reservation.ui.theme.screens.notifications
 import com.example.restaruant_reservation.ui.theme.screens.second
@@ -51,7 +51,7 @@ fun NavGraph() {
             forgotPassword1(navController = navController)
         }
         composable(route = Screens.SignUp.route) {
-            signUp(navController = navController)
+          signUp(navController = navController)
         }
         composable(route = Screens.ReservationScreen.route) {
             ReservationScreen(navController = navController)
@@ -63,7 +63,7 @@ fun NavGraph() {
             bestSeller(navController = navController)
         }
         composable(route = Screens.HappyDeals.route) {
-            happyDeals(navController = navController)
+            HappyDeals(navController = navController)
         }
         composable(route = Screens.Notifications.route) {
             notifications(navController = navController)

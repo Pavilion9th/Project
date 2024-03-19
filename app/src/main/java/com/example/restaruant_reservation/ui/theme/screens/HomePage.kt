@@ -1,5 +1,4 @@
 package com.example.restaruant_reservation.ui.theme.screens
-
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
@@ -115,7 +114,7 @@ fun homePage(navController: NavController) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.location_icon),
+                    painter = painterResource(id = R.drawable.img_1),
                     contentDescription = "location",
                     modifier = Modifier
                         .width(23.dp)
@@ -239,7 +238,7 @@ fun homePage(navController: NavController) {
                             color = Brown
                         )
                         TextButton(
-                            onClick = {navController.navigate(Screens.Reservation.route)},
+                            onClick = {navController.navigate(Screens.ReservationScreen.route)},
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 6.dp),
@@ -652,4 +651,3 @@ fun SearchBar() {
         shape = RoundedCornerShape(15.dp),
     )
 }
-
